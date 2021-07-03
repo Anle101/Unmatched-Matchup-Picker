@@ -15,7 +15,15 @@ function App() {
     {name:"Alice",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
     {name:"King Author",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
     {name:"Robin Hood",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
-    {name:"Bigfoot",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"}
+    {name:"Bigfoot",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
+    {name:"Sherlock Holmes",CombatRange:"Melee", minions: "Harpies (3) ", health: "16"},
+    {name:"Jekyll & Hyde",CombatRange:"Melee", minions: "Harpies (3) ", health: "16"},
+    {name:"Invisible Man",CombatRange:"Melee", minions: "Harpies (3) ", health: "16"},
+    {name:"Dracula",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
+    {name:"Little Red",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
+    {name:"Beowulf",CombatRange:"Ranged", minions: "Harpies (3) ", health: "16"},
+    {name:"Bruce Lee",CombatRange:"Melee", minions: "Harpies (3) ", health: "16"},
+    
   ];
 
   const titleIntro = useSpringRef();
@@ -40,9 +48,13 @@ function App() {
    
   });
 
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
   function SelectCharacter() { 
-    const random = Math.floor(Math.random() * 6); //0-5
-    const random2 = Math.floor(Math.random() * 6); //0-5
+    const random = getRndInteger(0,12); //0-5
+    const random2 = getRndInteger(0,12); //0-5
 
     console.log (Characters[random].name);
     console.log (Characters[random2].name);
