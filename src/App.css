@@ -20,3 +20,23 @@
   pointer-events: none;
 }
 
+.start-button { 
+  padding: 20px;
+  background-color: #000;
+  background-radius: 2px;
+  margin: 40px;
+  font-size: 42px;
+  color: #fff;
+  transition: 0.2s ease-in-out;
+}
+
+.start-button:hover {
+  background-color: #fff;
+  padding: 30px;
+  margin: 50px;
+  color: #000;
+}
+
+.front {
+  z-index:1;
+}

@@ -1,0 +1,50 @@
+.character-card1 {
+   
+    width: 30%;
+    height: 90%;
+    left: 20px;
+    position:absolute;
+    background-color:#253e4d;
+    border-radius:100px;
+    padding: 20px;
+    z-index: 0;
+}
+
+.character-card2 {
+   
+    width: 30%;
+    height: 90%;
+    right: 20px;
+    position:absolute;
+    background-color:#253e4d;
+    border-radius:100px;
+    padding: 20px;
+    z-index: 0;
+}
+
+
+
+.character-info {
+    position: absolute;
+    bottom: 0;
+    width: 600px;
+    left: 0px;
+    background-color:#000;
+    opacity: 90%;
+    padding: 20px;
+    
+}
+
+.rangelogo { 
+    width: 20%;
+}
+
+.characterimage {
+    position:absolute;
+    opacity: 50%;
+    left: -300px;
+    top: 0px;
+    height:120vh;
+    width: 120vh;
+    z-index: -1;
+}
