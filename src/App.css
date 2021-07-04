@@ -37,6 +37,16 @@
   color: #000;
 }
 
+
+.checkbox label:before { 
+  border-radius:3px;
+  background-color:#fff;
+}
 .front {
   z-index:1;
+}
+
+.form-label { 
+  margin:20px;
+  font-size:16px;
 }

@@ -7,28 +7,45 @@ import {useSpring,animated, useChain, useSpringRef, config} from 'react-spring';
 import {globalContext} from './context/globalContext';
 import CharacterCard from './components/CharacterCard';
 
+const Characters = [
+
+  {name:"MEDUSA",CombatRange:"/ranged.svg", minion: "HARPIES (3)", minionRange:"/melee.svg", health: "16", move:"3", characterImg:"/medusa.png", Set:"Battle of Legends Vol. One"},
+  {name:"SINBAD",CombatRange:"/melee.svg", minion: "THE PORTER", minionRange:"/melee.svg", health: "16",move:"2", characterImg:"/sinbad.png", Set:"Battle of Legends Vol. One"},
+  {name:"ALICE",CombatRange:"/melee.svg", minion: "JABBERWOCK", minionRange:"/melee.svg", health: "13", move: "2",characterImg:"/alice.png", Set:"Battle of Legends Vol. One"},
+  {name:"KING AUTHUR",CombatRange:"/melee.svg", minion: "MERLIN", minionRange:"/ranged.svg", health: "16", move:"2",characterImg:"/authur.png", Set:"Battle of Legends Vol. One"},
+  {name:"SHERLOCK HOLMES",CombatRange:"/melee.svg", minion: "DR. WATSON", minionRange:"/ranged.svg", health: "16",move:"2",characterImg:"/sherlock.png", Set:"Cobble of Fog"},
+  {name:"JEKYLL & HYDE",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "16", move:"2",characterImg:"/jekyll.png", Set:"Cobble of Fog"} ,
+  {name:"INVISIBLE MAN",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "15", move:"2", characterImg:"/invisibleman.png", Set:"Cobble of Fog"},
+  {name:"DRACULA",CombatRange:"/melee.svg", minion: "SISTERS (3)", minionRange:"/melee.svg", health: "13", move:"2",characterImg:"/dracula.png", Set:"Cobble of Fog"},
+  {name:"LITTLE RED",CombatRange:"/melee.svg", minion: "HUNTSMAN", minionRange:"/ranged.svg", health: "14", move:"2",characterImg:"/littlered.png", Set:"Red VS. Beowulf"},
+  {name:"BEOWULF",CombatRange:"/melee.svg", minion: "WIGLAF", minionRange:"/melee.svg", health: "17", move:"2",characterImg:"/beowulf.png", Set:"Red VS. Beowulf"},
+  {name:"BRUCE LEE",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "14", move:"3",characterImg:"/brucelee.png", Set:"Red VS. Beowulf"},
+  {name:"ROBIN HOOD",CombatRange:"/ranged.svg", minion: "OUTLAWS (4)", minionRange:"/melee.svg", health: "13", move:"2",characterImg:"/robinhood.png", Set:"Robin Hood VS. Bigfoot"},
+  {name:"BIGFOOT",CombatRange:"/melee.svg", minion: "JACKALOPE", minionRange:"/melee.svg", health: "16", move:"3",characterImg:"/bigfoot.png", Set:"Robin Hood VS. Bigfoot"},
+
+];
+
+const AvailableCharacters = [
+  
+]
 function App() {
-  const Characters = [
-    {name:"MEDUSA",CombatRange:"/ranged.svg", minion: "HARPIES (3)", health: "16", move:"3", characterImg:"/medusa.png"},
-    {name:"SINBAD",CombatRange:"/melee.svg", minion: "THE PORTER", health: "16",move:"2", characterImg:"/sinbad.png"},
-    {name:"ALICE",CombatRange:"/melee.svg", minion: "JABBERWOCK", health: "13", move: "2",characterImg:"/alice.png"},
-    {name:"KING AUTHUR",CombatRange:"/melee.svg", minion: "MERLIN", health: "16", move:"2",characterImg:"/authur.png"},
-    {name:"SHERLOCK HOLMES",CombatRange:"/melee.svg", minion: "DR. WATSON", health: "16",characterImg:"/sherlock.png"},
-    {name:"JEKYLL & HYDE",CombatRange:"/melee.svg", minion: "None", health: "16", move:"2",characterImg:"/jekyll.png"},
-    {name:"INVISIBLE MAN",CombatRange:"/melee.svg", minion: "None", health: "15", move:"2", characterImg:"/invisibleman.png"},
-    {name:"DRACULA",CombatRange:"/melee.svg", minion: "SISTERS (3)", health: "13", move:"2",characterImg:"/dracula.png"},
-    {name:"LITTLE RED",CombatRange:"/melee.svg", minion: "HUNTSMAN", health: "14", move:"2",characterImg:"/littlered.png"},
-    {name:"BEOWULF",CombatRange:"/melee.svg", minion: "WIGLAF", health: "17", move:"2",characterImg:"/beowulf.png"},
-    {name:"BRUCE LEE",CombatRange:"/melee.svg", minion: "None", health: "14", move:"3",characterImg:"/brucelee.png"},
-    {name:"ROBIN HOOD",CombatRange:"/ranged.svg", minion: "OUTLAWS (4)", health: "13", move:"2",characterImg:"/robinhood.png"},
-    {name:"BIGFOOT",CombatRange:"/melee.svg", minion: "JACKALOPE", health: "16", move:"3",characterImg:"/bigfoot.png"},
-
-  ];
-
+  
   const [Result, setResult] = useState(false);
   const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minions: "", health: "", move:""});
   const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minions: "", health: "", move:""});
 
+  const [MirrorMatch, setMirrorMatch] = useState(false);
+  const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
+
+  const [CobbleofFog, setCobbleofFog] = useState(false);
+  const updateCobbleofFog = () => setCobbleofFog(!CobbleofFog);
+  const [LegendsVolOne, setLegendsVolOne] = useState(false);
+  const updateLegendsVolOne = () => setLegendsVolOne(!LegendsVolOne);
+  const [MirrorMatch, setMirrorMatch] = useState(false);
+  const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
+  const [MirrorMatch, setMirrorMatch] = useState(false);
+  const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
+  
 
   const titleIntro = useSpringRef();
 
@@ -57,8 +74,16 @@ function App() {
   }
 
   function SelectCharacter() { 
-    const random = getRndInteger(0,12); //0-13
-    const random2 = getRndInteger(0,12); //0-13
+    var random = getRndInteger(0,12); //0-13
+    var random2 = getRndInteger(0,12); //0-13
+    if (!MirrorMatch) {
+      while (random == random2) {
+        random = getRndInteger(0,12);
+        random2 = getRndInteger(0,12);
+      }
+    }
+    
+    
 
     console.log("hi");
     setChosenCharacter1(Characters[random]);
@@ -66,12 +91,67 @@ function App() {
     setResult(true);
 
   }
+
+
   useChain([titleIntro, springupIntro], [0,0]);
   return (
     <>
-      <globalContext.Provider value={SelectCharacter, springup}>
+      <globalContext.Provider value={SelectCharacter, springup, titletransition, Result}>
         <div className="App">
-            
+            <animated.form style = {titletransition}>
+              <label className="form-label">
+                POSSIBLE MIRROR MATCHES?
+                <input
+                  name="MirrorMatch"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateMirrorMatch}
+                />
+              </label>
+              <br />
+              <br />
+              PACKS
+              <br />
+              <br />
+              <label className="form-label">
+                Cobble of Fog
+                <input
+                  name="Cobble"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateMirrorMatch}
+                />
+              </label>
+              <label className="form-label">
+                Battle of Legends Vol. One
+                <input
+                  name="Legends"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateMirrorMatch}
+                />
+              </label>
+              
+              <br />
+              <label className="form-label">
+                Red VS. Beowulf
+                <input
+                  name="Red"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateMirrorMatch}
+                />
+              </label>
+              <label className="form-label">
+                Robin Hood VS. Bigfoot
+                <input
+                  name="Hood"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateMirrorMatch}
+                />
+              </label>
+            </animated.form>
             <animated.img src={logo} style={titletransition} className="App-logo front" alt="logo" />
             <animated.p style={titletransition} className="front">
               IN BATTLE, THERE ARE <b>NO EQUALS.</b>
