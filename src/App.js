@@ -27,12 +27,12 @@ const Characters = [
 
 const AvailableCharacters = [
   
-]
+];
 function App() {
   
   const [Result, setResult] = useState(false);
-  const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minions: "", health: "", move:""});
-  const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minions: "", health: "", move:""});
+  const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
+  const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
 
   const [MirrorMatch, setMirrorMatch] = useState(false);
   const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
@@ -41,10 +41,12 @@ function App() {
   const updateCobbleofFog = () => setCobbleofFog(!CobbleofFog);
   const [LegendsVolOne, setLegendsVolOne] = useState(false);
   const updateLegendsVolOne = () => setLegendsVolOne(!LegendsVolOne);
-  const [MirrorMatch, setMirrorMatch] = useState(false);
-  const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
-  const [MirrorMatch, setMirrorMatch] = useState(false);
-  const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
+  const [RedVBeowulf, setRedVBeowulf] = useState(false);
+  const updateRedVBeowulf = () => setRedVBeowulf(!RedVBeowulf);
+  const [RobinVBigfoot, setRobinVBigfoot] = useState(false);
+  const updateRobinVBigfoot = () => setRobinVBigfoot(!RobinVBigfoot);
+  const [BruceLee, setBruceLee] = useState(false);
+  const updateBruceLee = () => setBruceLee(!BruceLee);
   
 
   const titleIntro = useSpringRef();
@@ -74,21 +76,61 @@ function App() {
   }
 
   function SelectCharacter() { 
-    var random = getRndInteger(0,12); //0-13
-    var random2 = getRndInteger(0,12); //0-13
-    if (!MirrorMatch) {
-      while (random == random2) {
-        random = getRndInteger(0,12);
-        random2 = getRndInteger(0,12);
+    if (CobbleofFog) { 
+      AvailableCharacters.push(Characters[4],Characters[5],Characters[6],Characters[7]); //Include cobble of fog characters
+    }
+    else { // remove the cobble of fog characters
+      for (var i = 0; i < AvailableCharacters.length; i++) {
+          if (AvailableCharacters[i].Set="CobbleofFog") {
+              AvailableCharacters.splice(i,1);
+          }
+      }
+    }
+
+    var random;
+    var random2;
+   
+    if (AvailableCharacters.length != 0) {
+      if (!MirrorMatch) {
+      
+        while (random == random2) {
+          random = getRndInteger(0,(AvailableCharacters.length - 1));
+          random2 = getRndInteger(0,(AvailableCharacters.length - 1));
+        }
+      }
+      else {
+          random = getRndInteger(0,(AvailableCharacters.length - 1)); //0-13
+          random2 = getRndInteger(0,(AvailableCharacters.length - 1)); //0-13
+      }   
+    }
+    else {
+      if (!MirrorMatch) {
+      
+        while (random == random2) {
+          random = getRndInteger(0,(Characters.length - 1));
+          random2 = getRndInteger(0,(Characters.length - 1));
+        }
+      }
+      else {
+          random = getRndInteger(0,(Characters.length - 1)); //0-13
+          random2 = getRndInteger(0,(Characters.length - 1)); //0-13
       }
     }
     
+
     
 
     console.log("hi");
-    setChosenCharacter1(Characters[random]);
-    setChosenCharacter2(Characters[random2]);
-    setResult(true);
+    if ((CobbleofFog == false) && (LegendsVolOne == false) && (RedVBeowulf == false) && (RobinVBigfoot == false) && (BruceLee == false)) { //Theoretically all checkboxes should be empty, in this case choose any character
+      
+      setChosenCharacter1(Characters[random]);
+      setChosenCharacter2(Characters[random2]);
+    }
+    else {
+      setChosenCharacter1(AvailableCharacters[random]);
+      setChosenCharacter2(AvailableCharacters[random2]);
+    }
+      setResult(true);
 
   }
 
@@ -119,7 +161,7 @@ function App() {
                   name="Cobble"
                   type="checkbox"
                   className="checkbox"
-                  onChange = {updateMirrorMatch}
+                  onChange = {updateCobbleofFog}
                 />
               </label>
               <label className="form-label">
@@ -128,7 +170,7 @@ function App() {
                   name="Legends"
                   type="checkbox"
                   className="checkbox"
-                  onChange = {updateMirrorMatch}
+                  onChange = {updateLegendsVolOne}
                 />
               </label>
               
@@ -139,7 +181,7 @@ function App() {
                   name="Red"
                   type="checkbox"
                   className="checkbox"
-                  onChange = {updateMirrorMatch}
+                  onChange = {updateRedVBeowulf}
                 />
               </label>
               <label className="form-label">
@@ -148,7 +190,16 @@ function App() {
                   name="Hood"
                   type="checkbox"
                   className="checkbox"
-                  onChange = {updateMirrorMatch}
+                  onChange = {updateRobinVBigfoot}
+                />
+              </label>
+              <label className="form-label">
+                Bruce Lee
+                <input
+                  name="Hood"
+                  type="checkbox"
+                  className="checkbox"
+                  onChange = {updateBruceLee}
                 />
               </label>
             </animated.form>
