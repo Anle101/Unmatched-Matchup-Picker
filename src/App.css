@@ -16,8 +16,11 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  display: block;
+  max-width:500px;
+  max-height:358px;
+  width: 30%;
+  height: auto;
 }
 
 .start-button { 
@@ -37,6 +40,13 @@
   color: #000;
 }
 
+.input-section {
+  width:20%;
+}
+
+.slogan {
+  width:25%;
+}
 
 .checkbox label:before { 
   border-radius:3px;

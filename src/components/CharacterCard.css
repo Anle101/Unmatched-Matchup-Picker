@@ -1,27 +1,21 @@
-.character-card1 {
+.character-card {
     width: 30%;
     height: 90%;
+   
+    position:absolute;
+    background-color:#253e4d;
+    border-radius:40px;
+    padding: 20px;
+    z-index: 0;
+    box-shadow: 0 0 15px 10px #000000;
+}
+
+.card1 {
     left: 20px;
-    position:absolute;
-    background-color:#253e4d;
-    border-radius:40px;
-    padding: 20px;
-    z-index: 0;
-    box-shadow: 0 0 15px 10px #000000;
 }
-
-.character-card2 {
-    width: 30%;
-    height: 90%;
+.card2 {
     right: 20px;
-    position:absolute;
-    background-color:#253e4d;
-    border-radius:40px;
-    padding: 20px;
-    z-index: 0;
-    box-shadow: 0 0 15px 10px #000000;
 }
-
 
 
 .character-info {
@@ -30,9 +24,13 @@
     width: 600px;
     left: 0px;
     background-color:#000;
-    opacity: 90%;
+    margin:0px;
     padding: 20px;
     
+}
+.mainrangelogo { 
+    width: 30%;
+    vertical-align:middle;
 }
 
 .rangelogo { 
@@ -42,10 +40,29 @@
 
 .characterimage {
     position:absolute;
-    opacity: 50%;
+ 
     left: -300px;
     top: 0px;
     height:120vh;
     width: 120vh;
     z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+    .character-card {
+        height: 20%;
+    }
+
+    .character-info {
+        padding:0px;
+        font-size: 12px;
+        left:-200px;
+    }
+
+    .characterimage {
+     left:-80px;
+     top:-35px;
+     height:auto;
+     width:40vh;
+    }
 }
