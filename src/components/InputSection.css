@@ -1,0 +1,4 @@
+.checkbox label:before { 
+    border-radius:3px;
+    background-color:#fff;
+  }

@@ -48,10 +48,7 @@
   width:25%;
 }
 
-.checkbox label:before { 
-  border-radius:3px;
-  background-color:#fff;
-}
+
 .front {
   z-index:1;
 }
