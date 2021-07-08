@@ -72,23 +72,23 @@ function App() {
     <>
       <globalContext.Provider value= {{springup, titletransition, Result, setResult}}>
         <div className="App">
-        <animated.img src={logo} style={titletransition} className="App-logo front" alt="logo" />
-            <animated.p style={titletransition} className="front slogan">
-              IN BATTLE, THERE ARE <b>NO EQUALS.</b>
-            </animated.p>
-        <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, AvailableCharacters, Characters}}>
-            <InputSection />
-        </inputContext.Provider>
+          <animated.img src={logo} style={titletransition} className="App-logo front" alt="logo" />
+          <animated.p style={titletransition} className="front slogan">
+            IN BATTLE, THERE ARE <b>NO EQUALS.</b>
+          </animated.p>
+    
+          <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, AvailableCharacters, Characters}}>
+              <InputSection />
+          </inputContext.Provider>
 
-            {Result && 
-              <>
-                <CharacterCard character={ChosenCharacter1} card={1}/>
-                <CharacterCard character={ChosenCharacter2} card={2}/>
-              </>
-            }
+          {Result && 
+            <>
+              <CharacterCard character={ChosenCharacter1} card={1}/>
+              <CharacterCard character={ChosenCharacter2} card={2}/>
+            </>
+          }
         </div>
       </globalContext.Provider>
-        
     </>
   );
 }
