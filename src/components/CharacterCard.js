@@ -14,7 +14,7 @@ function CharacterCard(props) {
     const titletransition = useContext(globalContext);
 
     const showInformation = () => {
-        if (window.innerWidth <= 768) { 
+        if (window.innerWidth <= 800) { 
             setshowInfo(false);
         } else { 
             setshowInfo(true);

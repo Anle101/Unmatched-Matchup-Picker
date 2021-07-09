@@ -48,7 +48,7 @@
     z-index: -1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .character-card {
         height: 20%;
     }
@@ -67,7 +67,7 @@
     }
 }
 
-@media screen and (max-width: 1270px) and (min-width:768px) {
+@media screen and (max-width: 1270px) and (min-width:800px) {
     .character-card {
         height: 50%;
     }
@@ -79,9 +79,27 @@
     }
 
     .characterimage {
-     left:-160px;
+     left:-130px;
      top:-35px;
      height:auto;
      width:60vh;
+    }
+}
+@media screen and (max-width: 1400px) and (min-width:1270px) {
+    .character-card {
+        height: 70%;
+    }
+
+    .character-info {
+        padding:0px;
+        font-size: auto;
+        left:-160px;
+    }
+
+    .characterimage {
+     left:-130px;
+     top:-35px;
+     height:auto;
+     width:65vh;
     }
 }
