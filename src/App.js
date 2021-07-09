@@ -62,7 +62,7 @@ function App() {
   const springup = useSpring({
     ref:springupIntro,
     to: {y:0},
-    from: {y:400},
+    from: {y:700},
  
     config: config.default,
   });

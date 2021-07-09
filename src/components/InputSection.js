@@ -7,6 +7,8 @@ import { inputContext } from '../context/inputContext'
 import './InputSection.css'
 function InputSection() {
 
+    const [enableOptions,setenableOptions] = useState(false);
+
     const [MirrorMatch, setMirrorMatch] = useState(false);
     const updateMirrorMatch = () => setMirrorMatch(!MirrorMatch);
 
@@ -40,16 +42,12 @@ function InputSection() {
     const [containsBruceLee, setcontainsBruceLee] = useState(false);
   
     const {setResult} = useContext(globalContext);
-
     const {AvailableCharacters} = useContext(inputContext);
     const {Characters} = useContext(inputContext);
     const {setChosenCharacter1} = useContext(inputContext);
     const {setChosenCharacter2} = useContext(inputContext);
-
-
     const {titletransition} = useContext(globalContext);
-
-    const springup = useContext(globalContext);
+    const {springup} = useContext(globalContext);
 
     useEffect(() => {
         if (CobbleofFog) {
@@ -323,93 +321,106 @@ function InputSection() {
      
   
     return (
-        <>
-            <animated.form style = {titletransition} className = "input-section">
-                <label className="form-label">
-                    POSSIBLE MIRROR MATCHES?
-                    <input
-                    name="MirrorMatch"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateMirrorMatch}
-                    />
-                </label>
+      <>
+        { !enableOptions &&  <animated.div className="options" style= {springup} onClick = {() => setenableOptions(!enableOptions)}>Options</animated.div>}
+        { enableOptions &&
+          <div className="optionmenu">
+              <animated.div className="back" style = {titletransition} onClick = {() => setenableOptions(!enableOptions)}> Back </animated.div>
+              <animated.form style = {titletransition} className = "input-section">
+              <hr />
+              <h4 className="optiontitle">OPTIONS</h4>
+              <hr />
+              
+                  <label className="form-label">
+                      POSSIBLE MIRROR MATCHES?
+                      <input
+                      name="MirrorMatch"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateMirrorMatch}
+                      />
+                  </label>
 
-                <br />
-    
-                <label className="form-label">
-                    Cobble of Fog
-                    <input
-                    name="Cobble"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateCobbleofFog}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    Battle of Legends Vol. One
-                    <input
-                    name="Legends"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateLegendsVolOne}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    Buffy: The Vampire Slayer
-                    <input
-                    name="Buffy"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateBuffy}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    InGen VS. The Raptors
-                    <input
-                    name="JurassicPark"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateIngenVRaptors}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    Robin Hood VS. Bigfoot
-                    <input
-                    name="Hood"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateRobinVBigfoot}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    Red VS. Beowulf
-                    <input
-                    name="Red"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateRedVBeowulf}
-                    />
-                </label>
-                <br />
-                <label className="form-label">
-                    Bruce Lee
-                    <input
-                    name="Bruce"
-                    type="checkbox"
-                    className="checkbox"
-                    onChange = {updateBruceLee}
-                    />
-                </label>
-                </animated.form>
+                  <br />
+                  <hr />
+                  <h5 className="optiontitle">PACKS</h5>
+                  <hr />
+                  <label className="form-label">
+                      Cobble of Fog
+                      <input
+                      name="Cobble"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateCobbleofFog}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      Battle of Legends Vol. One
+                      <input
+                      name="Legends"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateLegendsVolOne}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      Buffy: The Vampire Slayer
+                      <input
+                      name="Buffy"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateBuffy}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      InGen VS. The Raptors
+                      <input
+                      name="JurassicPark"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateIngenVRaptors}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      Robin Hood VS. Bigfoot
+                      <input
+                      name="Hood"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateRobinVBigfoot}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      Red VS. Beowulf
+                      <input
+                      name="Red"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateRedVBeowulf}
+                      />
+                  </label>
+                  <br />
+                  <label className="form-label">
+                      Bruce Lee
+                      <input
+                      name="Bruce"
+                      type="checkbox"
+                      className="checkbox"
+                      onChange = {updateBruceLee}
+                      />
+                  </label>
+                  </animated.form>
 
-                <animated.button style={titletransition} className="start-button front" onClick={SelectCharacter}>GIVE ME MY MATCHUP </animated.button>
-            </>
+                  
+              </div>
+        }
+        <animated.button style={springup} className="start-button front" onClick={SelectCharacter}>GIVE ME MY MATCHUP</animated.button>
+      </>
     )
 }
 

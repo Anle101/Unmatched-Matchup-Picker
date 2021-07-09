@@ -41,14 +41,14 @@
 .characterimage {
     position:absolute;
  
-    left: -300px;
+    left: -230px;
     top: 0px;
-    height:120vh;
-    width: 120vh;
+    height:900px;
+    width: 900px;
     z-index: -1;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     .character-card {
         height: 20%;
     }
@@ -63,7 +63,26 @@
      left:-80px;
      top:-35px;
      height:auto;
-     width:40vh;
+     width:300px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .character-card {
+        height: 20%;
+    }
+
+    .character-info {
+        padding:0px;
+        font-size: 12px;
+        left:-200px;
+    }
+
+    .characterimage {
+     left:-100px;
+     top:-35px;
+     height:auto;
+     width:400px;
     }
 }
 
@@ -82,7 +101,7 @@
      left:-130px;
      top:-35px;
      height:auto;
-     width:60vh;
+     width:600px;
     }
 }
 @media screen and (max-width: 1400px) and (min-width:1270px) {
@@ -100,6 +119,6 @@
      left:-130px;
      top:-35px;
      height:auto;
-     width:65vh;
+     width:600px;
     }
 }
