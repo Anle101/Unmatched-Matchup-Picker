@@ -66,3 +66,22 @@
      width:40vh;
     }
 }
+
+@media screen and (max-width: 1270px) and (min-width:768px) {
+    .character-card {
+        height: 50%;
+    }
+
+    .character-info {
+        padding:0px;
+        font-size: 22px;
+        left:-160px;
+    }
+
+    .characterimage {
+     left:-160px;
+     top:-35px;
+     height:auto;
+     width:60vh;
+    }
+}

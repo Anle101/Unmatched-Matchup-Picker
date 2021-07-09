@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect} from 'react'
-import {useSpring, animated,config} from 'react-spring'
+import { animated} from 'react-spring'
 
 import { globalContext } from '../context/globalContext'
 import { inputContext } from '../context/inputContext'
@@ -321,6 +321,7 @@ function InputSection() {
 
     }
      
+  
     return (
         <>
             <animated.form style = {titletransition} className = "input-section">
@@ -407,7 +408,7 @@ function InputSection() {
                 </label>
                 </animated.form>
 
-                <animated.button style={springup} className="start-button front" onClick={SelectCharacter}>GIVE ME MY MATCHUP </animated.button>
+                <animated.button style={titletransition} className="start-button front" onClick={SelectCharacter}>GIVE ME MY MATCHUP </animated.button>
             </>
     )
 }
