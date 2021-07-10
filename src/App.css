@@ -30,13 +30,18 @@
   top: 30%;
 }
 
+.map {
+  position:absolute;
+  bottom:35%;
+}
+
 
 .front {
   z-index:1;
 }
 
 .middle { 
-  top:50%;
+  top:40%;
   position:absolute;
 }
 

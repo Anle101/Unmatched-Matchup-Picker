@@ -39,8 +39,25 @@ const Characters = [
   {name:"BRUCE LEE",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "14", move:"3",characterImg:"/brucelee.png", Set:"Bruce Lee"},
 ];
 
+const Maps = [
+  {map:"Marmoreal", mapImg:"/marmoreal.jpg", Set:"Battle of Legends Vol. One"},
+  {map:"Sarpedon", mapImg:"/sarpedon.jpg", Set: "Battle of Legends Vol. One"},
+  {map:"SoHo", mapImg:"/soho.jpg", Set:"Cobble of Fog"},
+  {map:"Baskerville Manor", mapImg:"/baskerville-manor.jpg", Set:"Cobble of Fog"},
+  {map:"Sunnydale High", mapImg:"/sunnydale-high.jpg", Set:"Buffy"},
+  {map:"The Bronze", mapImg:"/the-bronze.jpg", Set:"Buffy"},
+  {map:"Yukon", mapImg:"/yukon.jpg", Set:"Robin Hood VS. Bigfoot"},
+  {map:"Sherwood Forest", mapImg:"/sherwood-forest.jpg", Set:"Robin Hood VS. Bigfoot"},
+  {map:"Raptor Paddock", mapImg:"/raptor-paddock.jpg", Set:"Ingen VS. Raptors"},
+  {map:"Heorot", mapImg:"/heorot.jpg", Set:"Red VS. Beowulf"},
+]
+
 const AvailableCharacters = [
   
+];
+
+const AvailableMaps = [
+
 ];
 function App() {
   
@@ -49,12 +66,12 @@ function App() {
 
   const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
   const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
-
+  const [ChosenMap, setChosenMap] = useState({map:"", mapImg:"", Set:""});
   const titleIntro = useSpringRef();
 
   const titletransition = useSpring({
     ref:titleIntro,
-    to: {opacity:1,y: 40},
+    to: {opacity:1,y: 0},
     from: {opacity:0,y: -200},
 
     config: config.stiff,
@@ -88,6 +105,7 @@ function App() {
             <>
             
               <CharacterCard character={ChosenCharacter1} card={1}/>
+              <img src="heorot.jpg" className="map" alt="map"></img>
               <h1 className="middle">VS.</h1>
               <CharacterCard character={ChosenCharacter2} card={2}/>
             </>
