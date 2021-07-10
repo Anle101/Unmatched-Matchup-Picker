@@ -45,6 +45,8 @@ const AvailableCharacters = [
 function App() {
   
   const [Result, setResult] = useState(false);
+  const [Team, setTeam] = useState(false);
+
   const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
   const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
 
@@ -61,7 +63,7 @@ function App() {
   const springupIntro = useSpringRef();
   const springup = useSpring({
     ref:springupIntro,
-    to: {y:0},
+    to: {y:300},
     from: {y:700},
  
     config: config.default,
@@ -82,8 +84,11 @@ function App() {
           </inputContext.Provider>
 
           {Result && 
+          
             <>
+            
               <CharacterCard character={ChosenCharacter1} card={1}/>
+              <h1 className="middle">VS.</h1>
               <CharacterCard character={ChosenCharacter2} card={2}/>
             </>
           }

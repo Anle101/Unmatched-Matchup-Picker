@@ -48,7 +48,7 @@
     z-index: -1;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 618px) {
     .character-card {
         height: 20%;
     }

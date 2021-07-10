@@ -337,13 +337,14 @@ function InputSection() {
                       name="MirrorMatch"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={MirrorMatch}
                       onChange = {updateMirrorMatch}
                       />
                   </label>
 
-                  <br />
+               
                   <hr />
-                  <h5 className="optiontitle">PACKS</h5>
+                  <h5 className="optiontitle">PACKS <p className="warningmessage">(Leave empty to select all)</p></h5>
                   <hr />
                   <label className="form-label">
                       Cobble of Fog
@@ -351,6 +352,7 @@ function InputSection() {
                       name="Cobble"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={CobbleofFog}
                       onChange = {updateCobbleofFog}
                       />
                   </label>
@@ -361,6 +363,7 @@ function InputSection() {
                       name="Legends"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={LegendsVolOne}
                       onChange = {updateLegendsVolOne}
                       />
                   </label>
@@ -371,6 +374,7 @@ function InputSection() {
                       name="Buffy"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={Buffy}
                       onChange = {updateBuffy}
                       />
                   </label>
@@ -381,6 +385,7 @@ function InputSection() {
                       name="JurassicPark"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={IngenVRaptors}
                       onChange = {updateIngenVRaptors}
                       />
                   </label>
@@ -391,6 +396,7 @@ function InputSection() {
                       name="Hood"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={RobinVBigfoot}
                       onChange = {updateRobinVBigfoot}
                       />
                   </label>
@@ -401,6 +407,7 @@ function InputSection() {
                       name="Red"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={RedVBeowulf}
                       onChange = {updateRedVBeowulf}
                       />
                   </label>
@@ -411,6 +418,7 @@ function InputSection() {
                       name="Bruce"
                       type="checkbox"
                       className="checkbox"
+                      defaultChecked={BruceLee}
                       onChange = {updateBruceLee}
                       />
                   </label>
@@ -419,7 +427,7 @@ function InputSection() {
                   
               </div>
         }
-        <animated.button style={springup} className="start-button front" onClick={SelectCharacter}>GIVE ME MY MATCHUP</animated.button>
+        <animated.div style={springup} className="start-button front unselectable" onClick={SelectCharacter}>GIVE ME MY MATCHUP</animated.div>
       </>
     )
 }

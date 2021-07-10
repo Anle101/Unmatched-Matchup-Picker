@@ -16,15 +16,18 @@
 }
 
 .App-logo {
-  display: block;
+  position:absolute;
   max-width:500px;
   max-height:358px;
   width: 30%;
   height: auto;
+  top: 1%;
 }
 
 .slogan {
-  width:25%;
+  position:absolute;
+  width:30%;
+  top: 30%;
 }
 
 
@@ -32,7 +35,34 @@
   z-index:1;
 }
 
+.middle { 
+  top:50%;
+  position:absolute;
+}
+
 .form-label { 
   margin:20px;
   font-size:16px;
+}
+
+@media screen and (max-width:800px) {
+
+  .App-logo { 
+    width: auto;
+    height:30%;
+  }
+  .slogan {
+    width:70%;
+    top: 25%;
+  }
+  
+}
+@media screen and (max-width: 1270px) and (min-width:800px) {
+
+  .slogan {
+    width:25%;
+    top: 25%;
+    font-size:20px;
+  }
+  
 }
