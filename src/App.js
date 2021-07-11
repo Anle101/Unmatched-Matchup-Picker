@@ -80,7 +80,7 @@ function App() {
   const springupIntro = useSpringRef();
   const springup = useSpring({
     ref:springupIntro,
-    to: {y:300},
+    to: {y:380},
     from: {y:700},
  
     config: config.default,
@@ -96,7 +96,7 @@ function App() {
             IN BATTLE, THERE ARE <b>NO EQUALS.</b>
           </animated.p>
     
-          <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, AvailableCharacters, Characters}}>
+          <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, setChosenMap, AvailableCharacters, Characters, AvailableMaps, Maps}}>
               <InputSection />
           </inputContext.Provider>
 
@@ -105,7 +105,8 @@ function App() {
             <>
             
               <CharacterCard character={ChosenCharacter1} card={1}/>
-              <img src="heorot.jpg" className="map" alt="map"></img>
+              <img src={ChosenMap.mapImg} className="map" alt="chosen map"></img>
+              <h5 className="map-title">Map: {ChosenMap.map}</h5>
               <h1 className="middle">VS.</h1>
               <CharacterCard character={ChosenCharacter2} card={2}/>
             </>

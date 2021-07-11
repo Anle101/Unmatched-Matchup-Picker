@@ -42,10 +42,15 @@ function InputSection() {
     const [containsBruceLee, setcontainsBruceLee] = useState(false);
   
     const {setResult} = useContext(globalContext);
+
     const {AvailableCharacters} = useContext(inputContext);
     const {Characters} = useContext(inputContext);
+    const {AvailableMaps} = useContext(inputContext);
+    const {Maps} = useContext(inputContext);
+
     const {setChosenCharacter1} = useContext(inputContext);
     const {setChosenCharacter2} = useContext(inputContext);
+    const {setChosenMap} = useContext(inputContext);
     const {titletransition} = useContext(globalContext);
     const {springup} = useContext(globalContext);
 
@@ -62,15 +67,28 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include cobble of fog characters
               }
             } 
+            
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Cobble of Fog") {
+                AvailableMaps.push(Maps[i]); //Include cobble of fog map
+              }
+            } 
             setcontainsCobbleofFog(true);
           }
         }
-        else { // remove the cobble of fog characters
+        else { // remove the cobble of fog characters and map
           if (containsCobbleofFog) {
             for (var i = AvailableCharacters.length- 1; i >= 0; i--) {
               if (AvailableCharacters[i].Set=="Cobble of Fog") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+            
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Cobble of Fog") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsCobbleofFog(false);        
@@ -93,6 +111,11 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include Legends Vol One Characters
               }
             }
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Battle of Legends Vol. One") {
+                AvailableMaps.push(Maps[i]); //Include Legends of Vol One maps
+              }
+            } 
             setcontainsLegendsVolOne(true);
           }
         }
@@ -102,6 +125,13 @@ function InputSection() {
               if (AvailableCharacters[i].Set=="Battle of Legends Vol. One") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+            
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Battle of Legends Vol. One") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsLegendsVolOne(false);        
@@ -124,6 +154,11 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include Legends Vol One Characters
               }
             }
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Buffy") {
+                AvailableMaps.push(Maps[i]); //Include Legends of Vol One maps
+              }
+            } 
             setcontainsBuffy(true);
           }
         }
@@ -133,6 +168,12 @@ function InputSection() {
               if (AvailableCharacters[i].Set=="Buffy") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Buffy") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsBuffy(false);        
@@ -155,6 +196,12 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include Muldoon and the raptors
               }
             }
+
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Ingen VS. Raptors") {
+                AvailableMaps.push(Maps[i]); //Include Legends of Vol One maps
+              }
+            } 
             setcontainsIngenVRaptors(true);
           }
         }
@@ -164,6 +211,13 @@ function InputSection() {
               if (AvailableCharacters[i].Set=="Ingen VS. Raptors") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Ingen VS. Raptors") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsIngenVRaptors(false);        
@@ -187,6 +241,11 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include Robin Hood and Bigfoot
               }
             }
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Robin Hood VS. Bigfoot") {
+                AvailableMaps.push(Maps[i]); //Include Legends of Vol One maps
+              }
+            } 
             setcontainsRobinVBigfoot(true);
           }
         }
@@ -196,6 +255,12 @@ function InputSection() {
               if (AvailableCharacters[i].Set=="Robin Hood VS. Bigfoot") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Robin Hood VS. Bigfoot") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsRobinVBigfoot(false);        
@@ -218,6 +283,11 @@ function InputSection() {
                 AvailableCharacters.push(Characters[i]); //Include Beowulf and Little Red
               }
             }
+            for (var i = 0; i < Maps.length ;i++) {
+              if (Maps[i].Set=="Red VS. Beowulf") {
+                AvailableMaps.push(Maps[i]); //Include Legends of Vol One maps
+              }
+            } 
             setcontainsRedVBeowulf(true);
           }
         }
@@ -227,6 +297,12 @@ function InputSection() {
               if (AvailableCharacters[i].Set=="Red VS. Beowulf") {
                   console.log(AvailableCharacters[i]);
                   AvailableCharacters.splice(i,1);
+              }
+            }
+            for (var i = AvailableMaps.length- 1; i >= 0; i--) {
+              if (AvailableMaps[i].Set=="Red VS. Beowulf") {
+                  console.log(AvailableMaps[i]);
+                  AvailableMaps.splice(i,1);
               }
             }
             setcontainsRedVBeowulf(false);
@@ -276,32 +352,36 @@ function InputSection() {
     function SelectCharacter() { 
         let random;
         let random2;
-    
+        let randommap;
+
         if (AvailableCharacters.length > 1) { //If there is a checkbox enabled || Special case, only solo fighters have been selected
-        if (!MirrorMatch) {
-            console.log("hi");
-            while (random == random2) {
-            random = getRndInteger(0,(AvailableCharacters.length - 1));
-            random2 = getRndInteger(0,(AvailableCharacters.length - 1));
-            }
-        }
-        else {
-            random = getRndInteger(0,(AvailableCharacters.length - 1));
-            random2 = getRndInteger(0,(AvailableCharacters.length - 1)); 
-        }   
+          if (!MirrorMatch) {
+              console.log("hi");
+              while (random == random2) {
+              random = getRndInteger(0,(AvailableCharacters.length - 1));
+              random2 = getRndInteger(0,(AvailableCharacters.length - 1));
+              }
+             
+          }
+          else {
+              random = getRndInteger(0,(AvailableCharacters.length - 1));
+              random2 = getRndInteger(0,(AvailableCharacters.length - 1)); 
+          }   
+          randommap = getRndInteger(0,(AvailableMaps.length - 1));
         }
         else { // If all checkboxes are blank
-        if (!MirrorMatch) {
-        
-            while (random == random2) {
-            random = getRndInteger(0,(Characters.length - 1));
-            random2 = getRndInteger(0,(Characters.length - 1));
-            }
-        }
-        else {
-            random = getRndInteger(0,(Characters.length - 1));
-            random2 = getRndInteger(0,(Characters.length - 1)); 
-        }
+          if (!MirrorMatch) {
+          
+              while (random == random2) {
+              random = getRndInteger(0,(Characters.length - 1));
+              random2 = getRndInteger(0,(Characters.length - 1));
+              }
+          }
+          else {
+              random = getRndInteger(0,(Characters.length - 1));
+              random2 = getRndInteger(0,(Characters.length - 1)); 
+          }
+          randommap = getRndInteger(0,(Maps.length - 1));
         }
         
 
@@ -310,10 +390,12 @@ function InputSection() {
         if (!CobbleofFog && !LegendsVolOne && !Buffy && !IngenVRaptors && !RedVBeowulf && !RobinVBigfoot) { //Theoretically all checkboxes should be empty, in this case choose any character
             setChosenCharacter1(Characters[random]);
             setChosenCharacter2(Characters[random2]);
+            setChosenMap(Maps[randommap]);
         }
         else {
             setChosenCharacter1(AvailableCharacters[random]);
             setChosenCharacter2(AvailableCharacters[random2]);
+            setChosenMap(AvailableMaps[randommap]);
         }
         setResult(true);
 

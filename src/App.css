@@ -32,9 +32,15 @@
 
 .map {
   position:absolute;
-  bottom:35%;
+  height:auto;
+  border: 5px solid #000;
+  bottom:33%;
 }
 
+.map-title {
+  position:absolute;
+  bottom:25%;
+}
 
 .front {
   z-index:1;
@@ -60,6 +66,16 @@
     width:70%;
     top: 25%;
   }
+
+  .map {
+    height:auto;
+    width:25%;
+    bottom:25%;
+  }
+  .map-title {
+    bottom:20%;
+  }
+  
   
 }
 @media screen and (max-width: 1270px) and (min-width:800px) {
@@ -68,6 +84,16 @@
     width:25%;
     top: 25%;
     font-size:20px;
+  }
+  
+  .map {
+    height:auto;
+    width:20%;
+    bottom:30%;
+  }
+  .map-title {
+    width:20%;
+    bottom:22%;
   }
   
 }
