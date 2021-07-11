@@ -80,7 +80,7 @@ function App() {
   const springupIntro = useSpringRef();
   const springup = useSpring({
     ref:springupIntro,
-    to: {y:380},
+    to: {y:320},
     from: {y:700},
  
     config: config.default,
@@ -105,7 +105,7 @@ function App() {
             <>
             
               <CharacterCard character={ChosenCharacter1} card={1}/>
-              <img src={ChosenMap.mapImg} className="map" alt="chosen map"></img>
+              <img src={process.env.PUBLIC_URL + ChosenMap.mapImg} className="map" alt="chosen map"></img>
               <h5 className="map-title">Map: {ChosenMap.map}</h5>
               <h1 className="middle">VS.</h1>
               <CharacterCard character={ChosenCharacter2} card={2}/>

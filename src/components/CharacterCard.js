@@ -26,13 +26,13 @@ function CharacterCard(props) {
     return (
         <>
             <animated.div style={Result?springup: titletransition} className={cardType + " character-card"}>
-                <img src={SelectedCharacter.characterImg} alt="character image" className="characterimage"/>
+                <img src={process.env.PUBLIC_URL + SelectedCharacter.characterImg} alt="character image" className="characterimage"/>
                 <div className="character-info">
                     <h3><u>{SelectedCharacter.name}</u> </h3>
                     {showInfo &&
                         <>
-                            <img src={SelectedCharacter.CombatRange} alt="character range" className="mainrangelogo"/> 
-                            <h5>Sidekick: {SelectedCharacter.minion}<br/><img src={SelectedCharacter.minionRange}  className="rangelogo"/></h5>  
+                            <img src={process.env.PUBLIC_URL + SelectedCharacter.CombatRange} alt="character range" className="mainrangelogo"/> 
+                            <h5>Sidekick: {SelectedCharacter.minion}<br/><img src={ process.env.PUBLIC_URL + SelectedCharacter.minionRange}  className="rangelogo"/></h5>  
                             
                             <p>Movement -> {SelectedCharacter.move}</p>
                         </>
