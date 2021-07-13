@@ -41,6 +41,10 @@ function InputSection() {
     const [containsRedVBeowulf, setcontainsRedVBeowulf] = useState(false);
     const [containsBruceLee, setcontainsBruceLee] = useState(false);
   
+    const {Team} = useContext(globalContext);
+    const {setTeam} = useContext(globalContext);
+    const updateTeam = () => setTeam(!Team); 
+
     const {setResult} = useContext(globalContext);
 
     const {AvailableCharacters} = useContext(inputContext);
@@ -50,6 +54,8 @@ function InputSection() {
 
     const {setChosenCharacter1} = useContext(inputContext);
     const {setChosenCharacter2} = useContext(inputContext);
+    const {setChosenCharacter3} = useContext(inputContext);
+    const {setChosenCharacter4} = useContext(inputContext);
     const {setChosenMap} = useContext(inputContext);
     const {titletransition} = useContext(globalContext);
     const {springup} = useContext(globalContext);
@@ -352,34 +358,44 @@ function InputSection() {
     function SelectCharacter() { 
         let random;
         let random2;
+        let random3;
+        let random4;
         let randommap;
 
         if (AvailableCharacters.length > 1) { //If there is a checkbox enabled || Special case, only solo fighters have been selected
           if (!MirrorMatch) {
               console.log("hi");
-              while (random == random2) {
+              while ((random == random2) || (random2 == random3) || (random2 == random4) || (random3 == random) || (random3 == random4) || (random4 == random)) {
               random = getRndInteger(0,(AvailableCharacters.length - 1));
               random2 = getRndInteger(0,(AvailableCharacters.length - 1));
+              random3 = getRndInteger(0,(AvailableCharacters.length - 1));
+              random4 = getRndInteger(0,(AvailableCharacters.length - 1));
               }
              
           }
           else {
               random = getRndInteger(0,(AvailableCharacters.length - 1));
               random2 = getRndInteger(0,(AvailableCharacters.length - 1)); 
+              random3 = getRndInteger(0,(AvailableCharacters.length - 1));
+              random4 = getRndInteger(0,(AvailableCharacters.length - 1));
           }   
           randommap = getRndInteger(0,(AvailableMaps.length - 1));
         }
         else { // If all checkboxes are blank
           if (!MirrorMatch) {
           
-              while (random == random2) {
+              while ((random == random2) || (random2 == random3) || (random2 == random4) || (random3 == random) || (random3 == random4) || (random4 == random)) {
               random = getRndInteger(0,(Characters.length - 1));
               random2 = getRndInteger(0,(Characters.length - 1));
+              random3 = getRndInteger(0,(Characters.length - 1));
+              random4 = getRndInteger(0,(Characters.length - 1));
               }
           }
           else {
               random = getRndInteger(0,(Characters.length - 1));
-              random2 = getRndInteger(0,(Characters.length - 1)); 
+              random2 = getRndInteger(0,(Characters.length - 1));
+              random3 = getRndInteger(0,(Characters.length - 1));
+              random4 = getRndInteger(0,(Characters.length - 1));
           }
           randommap = getRndInteger(0,(Maps.length - 1));
         }
@@ -388,13 +404,32 @@ function InputSection() {
         
 
         if (!CobbleofFog && !LegendsVolOne && !Buffy && !IngenVRaptors && !RedVBeowulf && !RobinVBigfoot) { //Theoretically all checkboxes should be empty, in this case choose any character
+          if (Team) {
             setChosenCharacter1(Characters[random]);
             setChosenCharacter2(Characters[random2]);
+            setChosenCharacter3(Characters[random3]);
+            setChosenCharacter4(Characters[random4]);
+          }
+          else {
+            setChosenCharacter1(Characters[random]);
+            setChosenCharacter2(Characters[random2]);
+          }
+            
             setChosenMap(Maps[randommap]);
         }
         else {
+          if (Team) {
             setChosenCharacter1(AvailableCharacters[random]);
             setChosenCharacter2(AvailableCharacters[random2]);
+            setChosenCharacter3(AvailableCharacters[random3]);
+            setChosenCharacter4(AvailableCharacters[random4]);
+            
+          }
+          else {
+            setChosenCharacter1(AvailableCharacters[random]);
+            setChosenCharacter2(AvailableCharacters[random2]);
+          }
+            
             setChosenMap(AvailableMaps[randommap]);
         }
         setResult(true);
@@ -423,8 +458,18 @@ function InputSection() {
                       onChange = {updateMirrorMatch}
                       />
                   </label>
+                  <br />
+                  <label className="form-label">
+                      2 v 2
+                      <input
+                      name="Team"
+                      type="checkbox"
+                      className="checkbox"
+                      defaultChecked={Team}
+                      onChange = {updateTeam}
+                      />
+                  </label>
 
-               
                   <hr />
                   <h5 className="optiontitle">PACKS <p className="warningmessage">(Leave empty to select all)</p></h5>
                   <hr />

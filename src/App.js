@@ -26,8 +26,8 @@ const Characters = [
   {name:"WILLOW",CombatRange:"/ranged.svg", minion: "TARA", minionRange:"/ranged.svg", health: "14", move: "2",characterImg:"/willow.png", Set:"Buffy"},
   {name:"ANGEL",CombatRange:"/melee.svg", minion: "FAITH", minionRange:"/melee.svg", health: "16", move:"2",characterImg:"/angel.png", Set:"Buffy"},
 
-  {name:"Muldoon",CombatRange:"/ranged.svg", minion: "INGEN WORKERS (3)", minionRange:"/ranged.svg", health: "14", move:"3",characterImg:"/ingen.png", Set:"Ingen VS. Raptors"},
-  {name:"The Raptors",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "7 (3)", move:"3",characterImg:"/raptors.png", Set:"Ingen VS. Raptors"},
+  {name:"MULDOON",CombatRange:"/ranged.svg", minion: "INGEN WORKERS (3)", minionRange:"/ranged.svg", health: "14", move:"3",characterImg:"/ingen.png", Set:"Ingen VS. Raptors"},
+  {name:"THE RAPTORS",CombatRange:"/melee.svg", minion: "None", minionRange:"", health: "7 (3)", move:"3",characterImg:"/raptors.png", Set:"Ingen VS. Raptors"},
 
   {name:"ROBIN HOOD",CombatRange:"/ranged.svg", minion: "OUTLAWS (4)", minionRange:"/melee.svg", health: "13", move:"2",characterImg:"/robinhood.png", Set:"Robin Hood VS. Bigfoot"},
   {name:"BIGFOOT",CombatRange:"/melee.svg", minion: "JACKALOPE", minionRange:"/melee.svg", health: "16", move:"3",characterImg:"/bigfoot.png", Set:"Robin Hood VS. Bigfoot"},
@@ -66,6 +66,9 @@ function App() {
 
   const [ChosenCharacter1, setChosenCharacter1] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
   const [ChosenCharacter2, setChosenCharacter2] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
+  const [ChosenCharacter3, setChosenCharacter3] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
+  const [ChosenCharacter4, setChosenCharacter4] = useState({name:"",CombatRange:"", minion: "", minionRange:"", health: "", move:"", characterImg:"", Set: ""});
+
   const [ChosenMap, setChosenMap] = useState({map:"", mapImg:"", Set:""});
   const titleIntro = useSpringRef();
 
@@ -89,26 +92,41 @@ function App() {
   useChain([titleIntro, springupIntro], [0,0]);
   return (
     <>
-      <globalContext.Provider value= {{springup, titletransition, Result, setResult}}>
+      <globalContext.Provider value= {{springup, titletransition, Result, setResult, setTeam,Team}}>
         <div className="App">
           <animated.img src={logo} style={titletransition} className="App-logo front" alt="logo" />
           <animated.p style={titletransition} className="front slogan">
             IN BATTLE, THERE ARE <b>NO EQUALS.</b>
           </animated.p>
     
-          <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, setChosenMap, AvailableCharacters, Characters, AvailableMaps, Maps}}>
+          <inputContext.Provider value= {{setChosenCharacter1, setChosenCharacter2, setChosenCharacter3, setChosenCharacter4, setChosenMap, AvailableCharacters, Characters, AvailableMaps, Maps}}>
               <InputSection />
           </inputContext.Provider>
 
           {Result && 
           
             <>
-            
-              <CharacterCard character={ChosenCharacter1} card={1}/>
-              <img src={process.env.PUBLIC_URL + ChosenMap.mapImg} className="map" alt="chosen map"></img>
-              <h5 className="map-title">Map: {ChosenMap.map}</h5>
-              <h1 className="middle">VS.</h1>
-              <CharacterCard character={ChosenCharacter2} card={2}/>
+              {Team && 
+              <>
+
+                <CharacterCard character={ChosenCharacter1} card={"teamcard1"} />
+                <CharacterCard character={ChosenCharacter2} card={"teamcard2"} />
+                <img src={process.env.PUBLIC_URL + ChosenMap.mapImg} className="map" alt="chosen map"></img>
+                <h5 className="map-title">Map: {ChosenMap.map}</h5>
+                <h1 className="middle">VS.</h1>
+                <CharacterCard character={ChosenCharacter3} card={"teamcard3"} />
+                <CharacterCard character={ChosenCharacter4} card={"teamcard4"} />
+              </>
+              }
+              {!Team &&  
+                <>
+                  <CharacterCard character={ChosenCharacter1} card={"card1"}/>
+                  <img src={process.env.PUBLIC_URL + ChosenMap.mapImg} className="map" alt="chosen map"></img>
+                  <h5 className="map-title">Map: {ChosenMap.map}</h5>
+                  <h1 className="middle">VS.</h1>
+                  <CharacterCard character={ChosenCharacter2} card={"card2"}/>
+                </>
+              }
             </>
           }
         </div>

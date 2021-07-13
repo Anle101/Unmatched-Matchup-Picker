@@ -6,7 +6,8 @@ import {useSpring,animated} from 'react-spring'
 function CharacterCard(props) {
 
     const SelectedCharacter= props.character;
-    const cardType = (props.card == 1)? "card1": "card2";
+    const {Team} = useContext(globalContext);
+
     const [showInfo,setshowInfo] = useState(true);
 
     const Result = useContext(globalContext);
@@ -25,21 +26,37 @@ function CharacterCard(props) {
     window.addEventListener('resize', showInformation);
     return (
         <>
-            <animated.div style={Result?springup: titletransition} className={cardType + " character-card"}>
-                <img src={process.env.PUBLIC_URL + SelectedCharacter.characterImg} alt="character image" className="characterimage"/>
-                <div className="character-info">
-                    <h3><u>{SelectedCharacter.name}</u> </h3>
-                    {showInfo &&
-                        <>
-                            <img src={process.env.PUBLIC_URL + SelectedCharacter.CombatRange} alt="character range" className="mainrangelogo"/> 
-                            <h5>Sidekick: {SelectedCharacter.minion}<br/><img src={ process.env.PUBLIC_URL + SelectedCharacter.minionRange}  className="rangelogo"/></h5>  
+            {!Team && 
+                <>
+                    <animated.div style={Result?springup: titletransition} className={props.card + " character-card"}>
+                        <img src={process.env.PUBLIC_URL + SelectedCharacter.characterImg} alt="character image" className="characterimage"/>
+                        <div className="character-info">
+                            <h3><u>{SelectedCharacter.name}</u> </h3>
+                            {showInfo &&
+                                <>
+                                    <img src={process.env.PUBLIC_URL + SelectedCharacter.CombatRange} alt="character range" className="mainrangelogo"/> 
+                                    <h5>Sidekick: {SelectedCharacter.minion}<br/><img src={(SelectedCharacter.minionRange == "")?"": process.env.PUBLIC_URL + SelectedCharacter.minionRange}  className="rangelogo"/></h5>  
+                                    
+                                    <p>Movement -> {SelectedCharacter.move}</p>
+                                </>
+                            }
                             
-                            <p>Movement -> {SelectedCharacter.move}</p>
-                        </>
-                    }
-                    
-                </div>
-            </animated.div>
+                        </div>
+                    </animated.div>
+                </>
+            }
+            {Team &&
+                <>
+                    <animated.div style={Result?springup: titletransition} className={props.card + " team-card"}>
+                        <img src={process.env.PUBLIC_URL + SelectedCharacter.characterImg} alt="character image" className="teamcharacterimage"/>
+                        <div className="teamcharacter-info">
+                            <h3><u>{SelectedCharacter.name}</u> </h3>
+                                    <img src={process.env.PUBLIC_URL + SelectedCharacter.CombatRange} alt="character range" className="mainrangelogo"/>   
+                        </div>
+                    </animated.div>
+                </>
+            }
+           
         </>
     )
 }
