@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Unmatched-Matchup-Picker/static/css/main.5ff951ac.chunk.css",
+    "main.css": "/Unmatched-Matchup-Picker/static/css/main.ccd206a8.chunk.css",
     "main.js": "/Unmatched-Matchup-Picker/static/js/main.8070fe81.chunk.js",
     "main.js.map": "/Unmatched-Matchup-Picker/static/js/main.8070fe81.chunk.js.map",
     "runtime-main.js": "/Unmatched-Matchup-Picker/static/js/runtime-main.7e7f552d.js",
@@ -8,14 +8,14 @@
     "static/js/2.c56cec37.chunk.js": "/Unmatched-Matchup-Picker/static/js/2.c56cec37.chunk.js",
     "static/js/2.c56cec37.chunk.js.map": "/Unmatched-Matchup-Picker/static/js/2.c56cec37.chunk.js.map",
     "index.html": "/Unmatched-Matchup-Picker/index.html",
-    "static/css/main.5ff951ac.chunk.css.map": "/Unmatched-Matchup-Picker/static/css/main.5ff951ac.chunk.css.map",
+    "static/css/main.ccd206a8.chunk.css.map": "/Unmatched-Matchup-Picker/static/css/main.ccd206a8.chunk.css.map",
     "static/js/2.c56cec37.chunk.js.LICENSE.txt": "/Unmatched-Matchup-Picker/static/js/2.c56cec37.chunk.js.LICENSE.txt",
     "static/media/logo.75067140.png": "/Unmatched-Matchup-Picker/static/media/logo.75067140.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7e7f552d.js",
     "static/js/2.c56cec37.chunk.js",
-    "static/css/main.5ff951ac.chunk.css",
+    "static/css/main.ccd206a8.chunk.css",
     "static/js/main.8070fe81.chunk.js"
   ]
 }
